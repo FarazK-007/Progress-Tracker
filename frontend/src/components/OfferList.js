@@ -1,0 +1,99 @@
+import React, { useEffect, useState } from 'react';
+import { fetchOffers, deleteOffer, updateOffer } from '../api/offerApi';
+import OfferForm from './OfferForm';
+
+function EditRow({ offer, onSave, onCancel }) {
+  const [form, setForm] = useState({ ...offer });
+  const handleChange = e => setForm({ ...form, [e.target.name]: e.target.value });
+  const handleSubmit = e => {
+    e.preventDefault();
+    onSave({ ...form });
+  };
+  return (
+    <form onSubmit={handleSubmit} className="form-grid" style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+      <input className="form-control" name="company" value={form.company} onChange={handleChange} required style={{width:130}} />
+      <input className="form-control" name="role" value={form.role} onChange={handleChange} required style={{width:130}} />
+      <input className="form-control" name="status" value={form.status} onChange={handleChange} required style={{width:100}} />
+      <button className="btn btn-primary" type="submit">💾 Save</button>
+      <button className="btn" type="button" onClick={onCancel} style={{ background: '#e2e8f0' }}>❌ Cancel</button>
+    </form>
+  );
+}
+
+const getOfferStatusBadge = (status) => {
+  const s = (status || '').toLowerCase();
+  if (s.includes('accept')) return 'status-badge status-success';
+  if (s.includes('reject') || s.includes('decline')) return 'status-badge status-danger';
+  if (s.includes('negotiating') || s.includes('pending')) return 'status-badge status-warning';
+  return 'status-badge status-info';
+};
+
+export default function OfferList() {
+  const [offers, setOffers] = useState([]);
+  const [editId, setEditId] = useState(null);
+  const loadOffers = () => fetchOffers().then(res => setOffers(res.data));
+  useEffect(() => { loadOffers(); }, []);
+  const handleDelete = async (id) => {
+    if (window.confirm('Delete this offer?')) {
+      await deleteOffer(id);
+      loadOffers();
+    }
+  };
+  const handleEdit = (id) => setEditId(id);
+  const handleCancel = () => setEditId(null);
+  const handleSave = async (form) => {
+    await updateOffer(form.id, form);
+    setEditId(null);
+    loadOffers();
+  };
+  return (
+    <div>
+      <OfferForm onSuccess={loadOffers} />
+      <div className="table-responsive">
+        <table className="styled-table">
+          <thead>
+            <tr>
+              <th>Company</th>
+              <th>Role</th>
+              <th>CTC</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {offers.map(offer => (
+              <tr key={offer.id} className={editId === offer.id ? 'editing-row' : ''}>
+                {editId === offer.id ? (
+                  <td colSpan="5">
+                    <EditRow offer={offer} onSave={handleSave} onCancel={handleCancel} />
+                  </td>
+                ) : (
+                  <>
+                    <td style={{ fontWeight: 600 }}>{offer.company}</td>
+                    <td>{offer.role}</td>
+                    <td>₹{offer.ctc.toLocaleString()}</td>
+                    <td><span className={getOfferStatusBadge(offer.status)}>{offer.status}</span></td>
+                    <td>
+                      <button className="btn btn-edit" onClick={() => handleEdit(offer.id)}>✏️ Edit</button>
+                      <button className="btn btn-danger" onClick={() => handleDelete(offer.id)}>🗑️ Delete</button>
+                    </td>
+                  </>
+                )}
+              </tr>
+            ))}
+            {offers.length === 0 && (
+              <tr>
+                <td colSpan="5" style={{ padding: 0 }}>
+                  <div className="empty-state">
+                    <div className="empty-state-icon">💰</div>
+                    <div className="empty-state-text">No offers recorded.</div>
+                  </div>
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}

@@ -1,0 +1,282 @@
+[
+  [
+    0,
+    "Resume + LinkedIn polish",
+    "[x] Update LinkedIn title, About, Open to Work; [x] verify resume URLs; [x] create tracker"
+  ],
+  [
+    1,
+    "Spark architecture",
+    "Driver, Executor, DAG, Stages, Shuffle; RDD vs DF; lazy eval; Learning Spark Ch1-2"
+  ],
+  [
+    2,
+    "Spark transformations & actions",
+    "Narrow vs wide, repartition vs coalesce, 10 PySpark snippets on Databricks CE"
+  ],
+  [
+    3,
+    "Spark joins & skew",
+    "Broadcast / sort-merge / shuffle hash; salting; AQE skew join"
+  ],
+  [
+    4,
+    "Catalyst, Tungsten, AQE",
+    "Catalyst phases; predicate pushdown; AQE configs; read df.explain() output"
+  ],
+  [
+    5,
+    "SQL deep dive 1",
+    "Window functions; 10 LeetCode SQL medium + 5 DataLemur"
+  ],
+  [
+    6,
+    "SQL deep dive 2 + review",
+    "CTEs (incl recursive), subqueries vs joins; 10 SQL problems; weekly summary"
+  ],
+  [
+    7,
+    "Spark Structured Streaming",
+    "Watermarks, triggers, output modes, checkpointing, exactly-once; APPLY 5 jobs"
+  ],
+  [
+    8,
+    "Spark perf tuning",
+    "Executor mem, shuffle.partitions; reading Spark UI; diagnose slow job"
+  ],
+  [
+    9,
+    "Delta Lake",
+    "ACID, time travel, Z-order, OPTIMIZE, VACUUM; write SCD2 MERGE"
+  ],
+  [
+    10,
+    "Snowflake 1",
+    "Architecture, micro-partitions, clustering, warehouse sizing, query profile"
+  ],
+  [
+    11,
+    "Snowflake 2",
+    "Streams, Tasks, Snowpipe, Time Travel, zero-copy clone; APPLY 5 jobs"
+  ],
+  [
+    12,
+    "SQL marathon",
+    "Finish LeetCode SQL 50; 5 StrataScratch hard"
+  ],
+  [
+    13,
+    "Mock SQL interview",
+    "Pramp / interviewing.io; review feedback; list 3 weak areas"
+  ],
+  [
+    14,
+    "Airflow fundamentals",
+    "DAGs, Operators, Sensors, Hooks, XCom; build 5-task DAG"
+  ],
+  [
+    15,
+    "Airflow advanced",
+    "Dynamic mapping, TaskGroups, branching, executors, idempotency; APPLY 5"
+  ],
+  [
+    16,
+    "BigQuery deep dive",
+    "Partitioning vs clustering, slots, materialized views, BI Engine"
+  ],
+  [
+    17,
+    "GCP data services",
+    "Dataproc vs Dataflow, Pub/Sub semantics, Composer, GCS lifecycle, Vertex AI overview"
+  ],
+  [
+    18,
+    "Azure data services",
+    "ADLS Gen2, Synapse pools, ADF, Azure Databricks; APPLY 5"
+  ],
+  [
+    19,
+    "Project: Agentic RAG (Day 1)",
+    "Repo setup FastAPI+LangChain+LangGraph+pgvector+Docker; ingest+embed; push to GH"
+  ],
+  [
+    20,
+    "Project: Agentic RAG (Day 2) + DDIA",
+    "Retrieval + LLM answer chain; DDIA Ch3 Storage & Retrieval"
+  ],
+  [
+    21,
+    "System design framework",
+    "Requirements -> scale -> high-level -> deep dives -> tradeoffs; watch 2 videos; APPLY 5"
+  ],
+  [
+    22,
+    "Design: Real-time analytics",
+    "Kafka -> Spark Streaming -> Delta -> BI; whiteboard with tradeoffs"
+  ],
+  [
+    23,
+    "Design: Lakehouse",
+    "Bronze/Silver/Gold, Unity Catalog, governance, schema evolution, CDC"
+  ],
+  [
+    24,
+    "LLM foundations",
+    "Transformers intuition, embeddings, temperature/top-p, CoT/ReAct; APPLY 5"
+  ],
+  [
+    25,
+    "RAG architecture deep dive",
+    "Chunking, embeddings, vector DBs comparison, hybrid retrieval, rerank"
+  ],
+  [
+    26,
+    "Project: Agentic RAG (Day 3)",
+    "LangGraph stateful graph (router/retriever/grader/generator); SQL tool; LangSmith"
+  ],
+  [
+    27,
+    "Project: Agentic RAG (Day 4) + DDIA",
+    "RAGAS evals; README diagram (Mermaid); DDIA Ch5 Replication"
+  ],
+  [
+    28,
+    "Agent patterns",
+    "ReAct, Plan-and-Execute, Reflexion, Multi-agent; Anthropic Building Effective Agents; APPLY 5"
+  ],
+  [
+    29,
+    "Tool calling",
+    "OpenAI function calling, Anthropic tool use; build ReAct loop from scratch"
+  ],
+  [
+    30,
+    "MCP (Model Context Protocol)",
+    "Read spec; build tiny MCP server exposing one tool"
+  ],
+  [
+    31,
+    "Guardrails + LLM Ops",
+    "Input/output validation, PII, jailbreak defense; LangSmith/LangFuse traces; APPLY 5"
+  ],
+  [
+    32,
+    "Project: Self-Healing Pipeline (Day 5)",
+    "LangGraph agent polling Airflow REST; tools: logs/classify/runbook/jira (mocked)"
+  ],
+  [
+    33,
+    "Project: Self-Healing Pipeline (Day 6)",
+    "Eval suite (10 scenarios); 2-min Loom demo; polish READMEs"
+  ],
+  [
+    34,
+    "Behavioral prep",
+    "Write 8 STAR stories: 20% cost, 40% MTTR, 3x throughput, conflict, mentor, incident, deadline, learn"
+  ],
+  [
+    35,
+    "Design: Multi-tenant RAG platform",
+    "50 tenants, isolation, eval loop, cost controls; APPLY 5"
+  ],
+  [
+    36,
+    "Design: Agentic L1 support auto-resolve",
+    "End-to-end flow, eval, human-in-loop, fallback; bridge to your project"
+  ],
+  [
+    37,
+    "Design: CDC at scale",
+    "Debezium -> Kafka -> Spark Streaming -> Delta; schema evolution; exactly-once"
+  ],
+  [
+    38,
+    "Design: Cost optimization war story",
+    "$50K/mo Databricks workload cut 40% - write the plan; APPLY 5"
+  ],
+  [
+    39,
+    "Mock 1: PySpark + SQL",
+    "Pramp/peer; record 3 weak spots"
+  ],
+  [
+    40,
+    "Mock 2: System Design",
+    "interviewing.io/peer; revisit weak spots"
+  ],
+  [
+    41,
+    "Mock 3: Agentic AI / GenAI",
+    "Walk through both projects; DDIA Ch11 Stream Processing skim"
+  ],
+  [
+    42,
+    "Behavioral mock + Lead stories",
+    "Practice all 8 STAR stories with peer; APPLY 10"
+  ],
+  [
+    43,
+    "Rapid-fire revision",
+    "50 flashcards Spark/SQL/Snowflake/Airflow/GenAI; weak spots; APPLY 10"
+  ],
+  [
+    44,
+    "Coding rust-off",
+    "10 timed SQL (15min ea) + 5 PySpark; APPLY 10"
+  ],
+  [
+    45,
+    "Cloud cert refresh",
+    "Review GCP PDE; consider booking Databricks DE Pro; APPLY 10"
+  ],
+  [
+    46,
+    "LinkedIn content push",
+    "Post Agentic RAG architecture write-up; r/dataengineering showcase; DM 5 recruiters"
+  ],
+  [
+    47,
+    "Mock 4: Full loop",
+    "4 back-to-back rounds with peer (SQL, Spark, design, behavioral)"
+  ],
+  [
+    48,
+    "Rest + visualization",
+    "Half-day off; calm review of STAR + notes"
+  ],
+  [
+    49,
+    "Interview day",
+    "Morning revise topic; afternoon interview; evening notes + follow-up"
+  ],
+  [
+    50,
+    "Interview day",
+    "Morning revise topic; afternoon interview; evening notes + follow-up"
+  ],
+  [
+    51,
+    "Interview day",
+    "Morning revise topic; afternoon interview; evening notes + follow-up"
+  ],
+  [
+    52,
+    "Interview day",
+    "Morning revise topic; afternoon interview; evening notes + follow-up"
+  ],
+  [
+    53,
+    "Interview day",
+    "Morning revise topic; afternoon interview; evening notes + follow-up"
+  ],
+  [
+    54,
+    "Interview day + apply",
+    "Maintain pipeline: 5 new applications, 1 SQL + 1 PySpark practice"
+  ],
+  [
+    55,
+    "Negotiation + decision",
+    "Compare offers on comp / scope / GenAI exposure / learning rate"
+  ]
+]

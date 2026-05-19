@@ -1,0 +1,141 @@
+from sqlalchemy import create_engine, Column, Integer, String, Date, Float, Boolean, Text
+from sqlalchemy.orm import declarative_base, sessionmaker
+import os
+
+# Use absolute path to the DB file in the project root
+_db_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "progress_tracker.db")
+DATABASE_URL = f"sqlite:///{_db_path}"
+
+engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+Base = declarative_base()
+
+
+# Shared DB dependency — import this in main.py and api.py
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+
+# Daily Plan
+class DailyPlan(Base):
+    __tablename__ = "daily_plan"
+    id = Column(Integer, primary_key=True, index=True)
+    day = Column(Integer, index=True)
+    date = Column(Date)
+    week = Column(String)
+    focus_area = Column(String)
+    tasks = Column(Text)
+    hours_planned = Column(Float)
+    status = Column(String)
+    hours_actual = Column(Float)
+    notes = Column(Text)
+    ai_guide = Column(Text, nullable=True)
+
+# Job Application
+class JobApplication(Base):
+    __tablename__ = "job_applications"
+    id = Column(Integer, primary_key=True, index=True)
+    date_applied = Column(Date)
+    company = Column(String)
+    role = Column(String)
+    location = Column(String)
+    source = Column(String)
+    job_link = Column(String)
+    referral = Column(String)
+    status = Column(String)
+    recruiter_contact = Column(String)
+    next_step = Column(String)
+    next_step_date = Column(Date)
+    notes = Column(Text)
+
+# Study Log
+class StudyLog(Base):
+    __tablename__ = "study_log"
+    id = Column(Integer, primary_key=True, index=True)
+    date = Column(Date)
+    topic = Column(String)
+    subtopic = Column(String)
+    hours = Column(Float)
+    confidence = Column(Integer)
+    sql_solved = Column(Integer)
+    pyspark_solved = Column(Integer)
+    resources = Column(Text)
+    notes = Column(Text)
+
+# Mock Interview
+class MockInterview(Base):
+    __tablename__ = "mock_interviews"
+    id = Column(Integer, primary_key=True, index=True)
+    date = Column(Date)
+    type = Column(String)
+    platform = Column(String)
+    score = Column(Integer)
+    strengths = Column(Text)
+    weak_areas = Column(Text)
+    action_items = Column(Text)
+
+# Project Milestone
+class ProjectMilestone(Base):
+    __tablename__ = "project_milestones"
+    id = Column(Integer, primary_key=True, index=True)
+    project = Column(String)
+    milestone = Column(String)
+    owner = Column(String)
+    due_date = Column(Date)
+    status = Column(String)
+    github_url = Column(String)
+    notes = Column(Text)
+
+# Question Bank
+class QuestionBank(Base):
+    __tablename__ = "question_bank"
+    id = Column(Integer, primary_key=True, index=True)
+    topic = Column(String)
+    question = Column(Text)
+    difficulty = Column(String)
+    answer = Column(Text)
+    confidence = Column(Integer)
+    last_revised = Column(Date)
+
+# Offer Comparison
+class Offer(Base):
+    __tablename__ = "offers"
+    id = Column(Integer, primary_key=True, index=True)
+    company = Column(String)
+    role = Column(String)
+    ctc = Column(Float)
+    base = Column(Float)
+    bonus = Column(Float)
+    stocks = Column(Float)
+    benefits = Column(Text)
+    notes = Column(Text)
+    status = Column(String)
+
+# Reminder
+class Reminder(Base):
+    __tablename__ = "reminders"
+    id = Column(Integer, primary_key=True, index=True)
+    title = Column(String)
+    due_date = Column(Date)
+    completed = Column(Boolean, default=False)
+    notes = Column(Text)
+
+# Target Company
+class TargetCompany(Base):
+    __tablename__ = "target_companies"
+    id = Column(Integer, primary_key=True, index=True)
+    company = Column(String)
+    tier = Column(String)
+    role = Column(String)
+    why_it_fits = Column(Text)
+    referral_contact = Column(String)
+    status = Column(String)
+
+# Analytics (optional, for future expansion)
+
+# Create all tables
+Base.metadata.create_all(bind=engine)

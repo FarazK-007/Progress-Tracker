@@ -1,0 +1,43 @@
+# Node modules
+frontend/node_modules/
+
+# Build outputs
+frontend/build/
+
+# Logs
+*.log
+
+# Python virtual environments
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+## SQLite DB (allow progress.db and backend/progress.db to be tracked)
+# progress_tracker.db
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+
+# VSCode settings
+.vscode/
+
+# Jupyter Notebooks checkpoints
+.ipynb_checkpoints/
+
+# Ignore any Git internals in subfolders
+**/.git/
+**/.gitmodules
+
+# Coverage reports
+htmlcov/
+.coverage
+
+# Misc
+*.swp
+*.swo
